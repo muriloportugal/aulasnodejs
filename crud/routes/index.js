@@ -6,4 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/new',function(req,res,next) {
+  res.render('new',{title:"Cadastro de Cliente",action:"/new"});  
+});
+
+router.post('/new',function(req,res,next){
+  res.redirect('/?new=true');
+});
+
 module.exports = router;

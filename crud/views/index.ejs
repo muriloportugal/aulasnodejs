@@ -19,9 +19,18 @@
         </tr>
       </thead>
       <tbody>
+        <% if(!docs || docs.length == 0){ %>
         <tr>
           <td colspan="4">Nenhum cliente cadastrado</td>
         </tr>
+        <% } else{ docs.forEach(function(customer){%>
+          <tr>
+            <td style="width:50%"><%= customer.nome %></td>
+            <td style="width:50%"><%= customer.idade %></td>
+            <td style="width:50%"><%= customer.uf %></td>
+            <td><!-- em breve --></td>
+          </tr>
+        <% })}%>
       </tbody>
       <tfoot>
         <tr>

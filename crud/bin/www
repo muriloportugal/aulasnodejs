@@ -8,6 +8,11 @@ var app = require('../app');
 var debug = require('debug')('crud:server');
 var http = require('http');
 
+/*
+ * Data Base Module
+ */
+global.db = require('../db');
+
 /**
  * Get port from environment and store in Express.
  */

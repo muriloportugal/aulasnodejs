@@ -17,4 +17,12 @@ function insertCustomer(customer,callback){
     global.conn.collection('customers').insert(customer,callback);
 }
 
-module.exports = {findCustomers,findCustomer,insertCustomer}
+function updateCustomer(id,customer,callback){
+    console.log(customer);
+    global.conn.collection('customers').updateOne(
+        {_id:new objectID(id)},
+        {$set: customer},
+        callback);
+}
+
+module.exports = {findCustomers,findCustomer,insertCustomer,updateCustomer}

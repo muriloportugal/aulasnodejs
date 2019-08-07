@@ -15,13 +15,14 @@ router.get('/',(req,res)=>{
     res.json({message:'Funcionando!'});
 });
 
+//GET Busca todos clientes
 router.get('/clientes',(req,res)=>{
     global.db.findCustomers((err,docs)=>{
         if(err) res.status(500).json(err);
         else res.json(docs);
     });
 });
-
+//GET :id consultar cliente
 router.get('/clientes/:id',(req,res)=>{
     global.db.findCustomer(req.params.id,(err,doc)=>{
         if(err) res.status(500).json(err);
@@ -29,12 +30,21 @@ router.get('/clientes/:id',(req,res)=>{
 
     });
 });
-
+//POST cadastrar cliente
 router.post('/clientes',(req,res)=>{
     const customer = req.body;
-    global.db.insert(customer,(err,result)=>{
+    global.db.insertCustomer(customer,(err,result)=>{
         if(err) res.status(500).json(err);
-        else result.json({message:'Cliente cadastrado com sucesso!'});
+        else res.json({message:'Cliente cadastrado com sucesso!'});
+    });
+});
+//PUT alterar cliente
+router.put('/clientes/:id',(req,res)=>{
+    const ids = req.params.id;
+    const customer = req.body;
+    global.db.updateCustomer(ids,customer,(err,result)=>{
+        if(err) res.status(500).json(err);
+        else res.json({message:'Cliente alterado com sucesso!'});
     });
 });
 

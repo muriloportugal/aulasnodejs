@@ -38,13 +38,30 @@ router.post('/clientes',(req,res)=>{
         else res.json({message:'Cliente cadastrado com sucesso!'});
     });
 });
-//PUT alterar cliente
+//PUT alterar cliente (todo o conteúdo do mesmo é substituído)
 router.put('/clientes/:id',(req,res)=>{
     const ids = req.params.id;
     const customer = req.body;
     global.db.updateCustomer(ids,customer,(err,result)=>{
         if(err) res.status(500).json(err);
         else res.json({message:'Cliente alterado com sucesso!'});
+    });
+});
+//PATCH altera o cliente parcialmente
+router.patch('/clientes/:id',(req,res)=>{
+    const id = req.params.id;
+    const updates = req.body;
+    global.db.patchCustomer(id,updates,(err,result)=>{
+        if(err) return res.status(500).json(err);
+        else return res.json({message:'Cliente atualizado com exito'});
+    });
+});
+//DELETE deleta Cliente
+router.delete('/clientes/:id',(req,res)=>{
+    const id = req.params.id;
+    global.db.deleteCustomer(id,(err,result)=>{
+        if(err) return res.status(500).json(err);
+        else return res.json('Cliente deleteado.');
     });
 });
 

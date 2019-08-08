@@ -14,15 +14,28 @@ function findCustomer(id,callback){
 }
 
 function insertCustomer(customer,callback){
-    global.conn.collection('customers').insert(customer,callback);
+    global.conn.collection('customers').insertOne(customer,callback);
 }
 
+//Aviso Mongodb update esta depreciada, vai ser subtituído por updateOne
 function updateCustomer(id,customer,callback){
-    console.log(customer);
+    global.conn.collection('customers').update(
+        {_id:new objectID(id)},
+        customer,
+        callback
+    );
+}
+
+function patchCustomer(id,updates,callback){
     global.conn.collection('customers').updateOne(
         {_id:new objectID(id)},
-        {$set: customer},
-        callback);
+        {$set:updates},
+        callback
+    );
 }
 
-module.exports = {findCustomers,findCustomer,insertCustomer,updateCustomer}
+function deleteCustomer(id,callback){
+    global.conn.collection('customers').deleteOne({_id: new objectID(id)},callback);
+}
+
+module.exports = {findCustomers,findCustomer,insertCustomer,updateCustomer,patchCustomer,deleteCustomer};

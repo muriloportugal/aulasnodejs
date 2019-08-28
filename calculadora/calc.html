@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Calculadora</title>
 </head>
-<body>
+<body onkeypress="manipularTeclado()">
     <div class="display-calc">
         <input type="text" id="display" name="disp" value="0" disabled>
     </div>
@@ -60,6 +60,10 @@
             valor1 = eval(valor1+operador+valor2);
             display.value = valor1;
             operador = "";
+        }
+        function manipularTeclado(){
+            if(/[0-9]/.test(event.key))
+                atualizarDisplay({value:event.key});
         }
     </script>
 </body>

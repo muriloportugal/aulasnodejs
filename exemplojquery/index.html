@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exemplo jquery-3</title>
+</head>
+<body>
+    <div id="divCadastro">
+        <h2>Cadastro</h2>
+        <form action="" method="">
+            <p>
+                <label for="nome">Nome</label>Nome: </label>
+                <input type="text" name="nome" id="nome">
+            </p>
+            <p>
+                <label for="idade">Idade: </label>
+                <input type="text" name="idade" id="idade">
+            </p>
+            <p>
+                <label for="uf">UF: </label>
+                <select name="uf" id="uf">
+                    <option value="SP">São Paulo</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PR">Paraná</option>
+                </select>
+            </p>
+            <p>
+                <input type="button" id="btnListar" value="Listar"> |
+                <input type="submit" id="salvar" value="Salvar">
+            </p>
+
+        </form>
+        
+    </div>
+    <div id="divListagem">
+        <h2>Listagem</h2>
+        <table style="width: 50%">
+            <thead>
+                <tr style="background-color: #CCC">
+                    <td style="width: 50%">Nome</td>
+                    <td style="width: 15%">Idade</td>
+                    <td style="width: 15%">UF</td>
+                    <td>Ações</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">Nenhum Cliente Cadastrado</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <input type="button" id="btnCadastrar" value="Cadastrar">
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

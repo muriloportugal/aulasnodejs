@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const port = 3000; //porta padrão
+const cors = require('cors');
 
+app.use(cors());
 /* Utiliza o middleware body-parser para converter o body das requisições em JSON */
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -33,6 +35,7 @@ router.get('/clientes/:id',(req,res)=>{
 //POST cadastrar cliente
 router.post('/clientes',(req,res)=>{
     const customer = req.body;
+    console.log(customer);
     global.db.insertCustomer(customer,(err,result)=>{
         if(err) res.status(500).json(err);
         else res.json({message:'Cliente cadastrado com sucesso!'});
